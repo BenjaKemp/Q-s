@@ -1,0 +1,17 @@
+I have used the online resource draw.io to design the database. It is shared through
+my google drive account.
+
+You can launch the HTML document in the browser or else follow this link directly
+
+  https://www.draw.io/#G1ZflC1vGkjloj11PxZyWz-zAlxI2wvYYD.
+
+  It is useful to start off with entity relationship modeling in order to define the entities, relationships,
+   and attributes in your application:
+  * Entities: Main objects in your application, in this case we’ll say products and warehouses
+  * Attributes: properties of the objects, id, warehouse, date stored.
+  * Relationships: connections between entities, product has 1-1 relationship with its warehouse but each warehouse can have many products
+
+  The (minimum) Entities in this case are:
+  * Product, Warehouse. The relations are:
+  * A warehouse holds many products
+  * each product has one warehouse

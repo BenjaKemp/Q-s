@@ -1,0 +1,99 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+height:40px;
+width:100%;
+border-bottom: black solid 1px;
+padding: 5px;
+
+}
+.footer {
+height:35px;
+width:100%;
+border-top: black solid 1px;
+}
+
+
+.side-bar{
+  padding:20px 20px;;
+  height:100%;
+  background-color: black;
+  width:100%;
+  border-right: black solid 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-flex-container{
+display:flex;
+flex-grow: 1;
+flex-direction: column;
+}
+
+
+.dashboard{
+  height: 90%;
+  width:90%;
+  display: flex;
+  flex-direction: row;
+}
+
+.header-icon {
+  height:30px;
+  width:30px;
+  border-radius: 50%;
+  background-color: red;
+
+}
+
+.sidebar-icon {
+  height:30px;
+  width:30px;
+  border-radius: 50%;
+  background-color: gray;
+}
+
+
+.dashboard-box {
+padding-left: 0 !important;
+padding-right: 0 !important;
+  margin:3px;
+  border-radius: 5px;
+  border: solid 1px black;
+  background-color: gray;
+
+}
+  .basic-box{
+    height:140px;
+}
+
+
+.little-box{
+height:70px;
+
+}
+
+.taller-box{
+height:280px;
+
+}
+.biggest-box{
+height:350px;
+
+}
+
+.teeny-box {
+  height:35px;
+  border-radius: 5px 5px 0 0 ;
+  border-bottom: 0;
+}
+.teeny-tiny-box {
+  height:35px;
+  width: 30%;
+  border-radius: 5px 5px 0 0 ;
+  border-bottom: 0;
+}

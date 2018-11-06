@@ -1,0 +1,29 @@
+
+
+The E-R model can be used with your query and data access patterns to define the physical model so that
+the data that is read together is stored together.
+
+
+to calculate total stock per product i would create an empty object. then check every entity in the database,
+ if it’s ‘product’ value exists as a key in my new object, increment its value by one, if it doesn’t,
+  add it to the object as a 'key' with a value of 0.
+after traversing every item in the database it will return the completed table. an example of this can be found in
+MongoDB
+db.collection.find().forEach(<function>)
+
+
+
+the same method can be implemented for the products in a warehouse. If we check every entity, in this case
+ each product, we simply create the map on warehouse value. if it’s ‘warehouse’ value exists as a key in my
+ object, increment its value by one, if it doesn’t, add it to the object.
+
+a simple arithmetic formula could help determine incremental differences. we would have to determine
+ the difference between total stock in month n and the stock in n-1.
+
+for period N we would need the quantity of all those products with an undefined Date Out. This constitutes
+everything currently in stock.
+
+for period N-1 we would need everything currently in stock plus all those with a date out after the start of period N-1
+and before the beginning at the beginning of period N.
+
+The difference between these two is the month on month change in stock.

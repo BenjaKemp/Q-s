@@ -1,0 +1,64 @@
+2. How would you sync striped payments received on a daily basis?
+
+there are a few ways this can be achieved, using the dashboard and the API.
+
+You can have emails sent to you directly for any payments you receive, along with
+a few other options on your account setting page.
+I'll attach a link below:
+https://dashboard.stripe.com/settings/user
+
+If you were looking for a report of all payments you received in one day, you can export
+ your payments page, by tapping the "Export" button on the top right of the page below:
+https://dashboard.stripe.com/payments
+
+as for the API, to can amend calls to stripe.charges.list. Specifically you can pick all charges created
+on a specific day, and so potentially every day.
+
+var stripe = require("stripe")("sk_test_PQe478mHGjjy9fl8ZBuHr7ry");
+
+stripe.charges.list(
+  { limit: 3 },
+  function(err, charges) {
+    // asynchronously called
+  }
+);
+
+  To receive funds for payments you’ve processed, Stripe makes deposits (payouts)
+ of your available account balance into your bank account. This account balance is comprised
+ of different types of transactions (e.g., payments, refunds, etc.).
+
+Once you start processing with Stripe, your first payout is made 7-10 days after your first successful
+payment is received. Subsequent payouts are then processed according to your account’s payout schedule.
+This allows Stripe to mitigate some of the risks inherent in providing credit services.
+Your bank account information is required when activating your account. The type of bank account information
+required depends on where your bank account is located.
+
+for Spain, an account with a 24 character IBAN is all that is required.
+By default, Stripe automatically creates payouts of your available account balance based on the
+ schedule specified in the Dashboard. The schedule used is dependent on your country and whether your
+  business operates in a higher-risk industry.
+
+When it comes to payouts, for users based in Spain, at this time Stripe are only able to do it on a
+ 7-day rolling payout schedule. Keep in mind, you will receive a payout daily from 7 days prior.
+ This means charges made on Monday will be bundled together and paid to you on the following Monday.
+ A Payout object is created when you receive funds from Stripe, or when you initiate a payout to either a bank
+ account or debit card of a connected Stripe account. You can retrieve individual payouts, as well as list
+  all payouts
+
+ When using automatic payouts, the payout_schedule property on an account indicates how often the Stripe
+ account’s balance is automatically paid out:
+
+{
+  ...
+  "payout_schedule": {
+    "delay_days": 7,
+    "interval": "daily"
+  },
+  ...
+}
+
+When a payment is first received, it is initially reflected as a pending balance (less any Stripe fees).
+ This balance becomes available according to your payout schedule. For instance, it takes seven days from
+ a payment being received to it being paid out for Stripe accounts on a 7-day rolling schedule.
+Most banks deposit payouts into your bank account as soon as they are received, though some may take a
+few extra days to make them available.
